@@ -14,7 +14,7 @@ job "octopus_tentacle" {
       env = {
         ACCEPT_EULA        = "Y"
         DISABLE_DIND       = "Y"
-        ServerApiKey       = "API-TNKPTOADYUQESPYKEPNZIBHI4JAYK6KQ"
+        ServerApiKey       = "changeme"
         ServerUrl          = "https://lykins.octopus.app"
         ServerCommsAddress = "https://polling.lykins.octopus.app"
         TargetWorkerPool   = "nomad"
