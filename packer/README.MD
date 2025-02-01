@@ -2,7 +2,7 @@
 
 So couple of notes to get going. 
 
-1. I would recommend downloading the iso manually. The provider seems to have issues/odd behavior when downloading an iso. 
+1. I would recommend downloading the iso manually. The plugin or proxmox seems to have issues/odd behavior when downloading an iso.
 2. Most sensitive values, I hope I got out :). I use the env() function with packer.
 
 ```bash
