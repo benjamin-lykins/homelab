@@ -11,7 +11,7 @@ client {
   enabled = true
   servers = ["192.168.39.100"]
 
-  host_volume "homelab" {
+  host_volume "media" {
     path      = "/nfs/general"
     read_only = false
   }
