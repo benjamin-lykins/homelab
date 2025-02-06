@@ -31,7 +31,7 @@ resource "proxmox_virtual_environment_vm" "haproxy" {
     full      = true
   }
 
-   lifecycle {
+  lifecycle {
     ignore_changes = [
       network_device, vga
     ]
