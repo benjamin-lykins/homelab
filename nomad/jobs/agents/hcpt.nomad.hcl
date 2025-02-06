@@ -7,7 +7,7 @@ job "tfc-agent" {
 
 
     task "tfc-agent" {
-      driver = "docker"
+      driver = "podman"
 
       config {
         image = "hashicorp/tfc-agent"
@@ -16,7 +16,13 @@ job "tfc-agent" {
       env {
         TFC_AGENT_SINGLE = "true"
         TFC_AGENT_NAME   = "${NOMAD_TASK_NAME}-${NOMAD_ALLOC_ID}"
-        TFC_AGENT_TOKEN  = "changeme"
+      }
+            template {
+        data        = <<EOH
+TFC_AGENT_TOKEN="{{ with nomadVar "nomad/jobs/" }}{{ .TFC_AGENT_TOKEN }}{{ end }}"
+EOH
+        destination = "secrets/file.env"
+        env         = true
       }
 
       resources {

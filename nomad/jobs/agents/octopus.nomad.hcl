@@ -13,12 +13,18 @@ job "octopus_tentacle" {
 
       env = {
         ACCEPT_EULA        = "Y"
-        DISABLE_DIND       = "Y"
-        ServerApiKey       = "changeme"
         ServerUrl          = "https://lykins.octopus.app"
         ServerCommsAddress = "https://polling.lykins.octopus.app"
         TargetWorkerPool   = "nomad"
         Space              = "homelab"
+      }
+
+      template {
+        data        = <<EOH
+ServerApiKey="{{ with nomadVar "nomad/jobs/" }}{{ .OCTOPUS_TOKEN }}{{ end }}"
+EOH
+        destination = "secrets/file.env"
+        env         = true
       }
     }
   }

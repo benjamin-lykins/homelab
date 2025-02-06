@@ -1,6 +1,8 @@
-vm_name          = "client-base"
+proxmox_vm_name          = "client-base"
 proxmox_template = "client-base"
-vm_id            = 202
+proxmox_vm_id            = 202
+proxmox_node = "mf2"
+
 
 proxmox_disks = {
   "0" = {
@@ -12,9 +14,12 @@ proxmox_disks = {
 
 scripts = {
   "0" = {
-    path = "packer/shared/scripts/linux/debian/client.sh"
+    path = "packer/shared/scripts/linux/debian/base.sh"
   }
   "1" = {
+    path = "packer/shared/scripts/linux/debian/client.sh"
+  }
+  "2" = {
     path = "packer/shared/scripts/linux/debian/deprovision.sh"
   }
 }

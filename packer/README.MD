@@ -6,10 +6,10 @@ So couple of notes to get going.
 2. Most sensitive values, I hope I got out :). I use the env() function with packer.
 
 ```bash
-export PROXMOX_URL=https://8.8.8.8/api2/json
-export PROXMOX_PASSWORD=password
-export PROXMOX_ROOT_PASSWORD=password
-export PROXMOX_USER_PASSWORD=password
+export PROXMOX_URL=https://192.168.39.10:8006/api2/json
+export PROXMOX_PASSWORD=lykins
+export PROXMOX_ROOT_PASSWORD=lykins
+export PROXMOX_USER_PASSWORD=lykins
 ```
 
 ### When Running

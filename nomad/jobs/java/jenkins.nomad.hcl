@@ -1,14 +1,9 @@
 job "jenkins" {
   type        = "service"
   datacenters = ["homelab"]
-  update {
-    stagger      = "30s"
-    max_parallel = 1
-  }
-  group "web" {
+  group "jenkins" {
     count = 1
-    # Size of the ephemeral storage for Jenkins. Consider that depending
-    # on job count and size it could require larger storage.
+
     ephemeral_disk {
       migrate = true
       size    = "500"
@@ -17,11 +12,9 @@ job "jenkins" {
 
     network {
       port "http" {
-        static = 8080
       }
     }
-
-    task "frontend" {
+    task "jenkins" {
       env {
         JENKINS_HOME = "/alloc/data"
       }

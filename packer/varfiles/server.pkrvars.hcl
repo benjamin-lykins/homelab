@@ -1,6 +1,7 @@
-vm_name          = "server-base"
+proxmox_vm_name          = "server-base"
 proxmox_template = "server-base"
-vm_id            = 201
+proxmox_vm_id            = 201
+proxmox_node = "mf3"
 
 proxmox_disks = {
   "0" = {
@@ -12,9 +13,12 @@ proxmox_disks = {
 
 scripts = {
   "0" = {
-    path = "packer/shared/scripts/linux/debian/server.sh"
+    path = "packer/shared/scripts/linux/debian/base.sh"
   }
   "1" = {
+    path = "packer/shared/scripts/linux/debian/server.sh"
+  }
+  "2" = {
     path = "packer/shared/scripts/linux/debian/deprovision.sh"
   }
 }

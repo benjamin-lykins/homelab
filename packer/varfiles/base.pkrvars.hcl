@@ -1,6 +1,7 @@
 proxmox_vm_name          = "base"
 proxmox_template = "base"
 proxmox_vm_id            = 200
+proxmox_node = "mf1"
 
 proxmox_disks = {
   "0" = {

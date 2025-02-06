@@ -10,6 +10,24 @@ wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/sh
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 apt-get update && sudo apt-get install -y vault consul nomad nomad-driver-podman nomad-driver-exec2 -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"
 
+# Container Network Interface (CNI)
+# https://developer.hashicorp.com/nomad/docs/networking/cni
+# https://developer.hashicorp.com/nomad/docs/install#install-cni-reference-plugins
+sudo modprobe bridge
+sudo modprobe br_netfilter
+
+export ARCH_CNI=$( [ $(uname -m) = aarch64 ] && echo arm64 || echo amd64)
+export CNI_PLUGIN_VERSION=v1.6.2
+curl -L -o cni-plugins.tgz "https://github.com/containernetworking/plugins/releases/download/${CNI_PLUGIN_VERSION}/cni-plugins-linux-${ARCH_CNI}-${CNI_PLUGIN_VERSION}".tgz && \
+sudo mkdir -p /opt/cni/bin && \
+sudo tar -C /opt/cni/bin -xzf cni-plugins.tgz
+
+# Configure sysctl for bridge networking
+# https://developer.hashicorp.com/nomad/docs/install#configure-bridge-network-to-route-traffic-through-iptables
+echo "net.bridge.bridge-nf-call-arptables = 1" | sudo tee -a /etc/sysctl.d/bridge.conf
+echo "net.bridge.bridge-nf-call-ip6tables = 1" | sudo tee -a /etc/sysctl.d/bridge.conf
+echo "net.bridge.bridge-nf-call-iptables = 1" | sudo tee -a /etc/sysctl.d/bridge.conf
+
 # Docker installation
 sudo apt-get update -y
 sudo apt-get install ca-certificates curl -y
