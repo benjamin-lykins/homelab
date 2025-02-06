@@ -14,7 +14,7 @@ export PROXMOX_USER_PASSWORD=lykins
 
 ### When Running
 
-In my example, I run three different builds. Typically with Packer, I would do a base build, then build upon the base build. I was lazy and didn't do that. These all will take a fresh iso and build a unique image. 
+In my example, I run three different builds. Typically with Packer, I would do a base build, then build upon the base build. I didn't do that here. These build from ISOs directly. 
 
 For my most basic image --
 

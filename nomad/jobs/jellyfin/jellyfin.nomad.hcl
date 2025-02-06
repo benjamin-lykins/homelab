@@ -4,6 +4,12 @@ job "jellyfin" {
 
   group "jellyfin" {
     count = 1
+        
+    volume "media" {
+      type      = "host"
+      read_only = true
+      source    = "media"
+    }
 
     network {
       mode = "bridge" # Use bridge mode instead of host
@@ -25,10 +31,14 @@ service {
     "traefik.http.services.jellyfin.loadbalancer.server.port=${NOMAD_HOST_PORT_http}"
   ]
 }
-
-
     task "jellyfin" {
       driver = "docker"
+      
+      volume_mount {
+        volume      = "media"
+        destination = "/media"
+        read_only   = true
+      }
 
       config {
         image = "jellyfin/jellyfin:latest"
@@ -36,7 +46,6 @@ service {
         volumes = [
           "/nfs/general/jellyfin/config:/config",
           "/nfs/general/jellyfin/cache:/cache",
-          "/nfs/general/media:/media"
         ]
       }
 
