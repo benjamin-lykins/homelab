@@ -12,7 +12,7 @@ client {
   servers = ["192.168.39.100"]
 
   host_volume "media" {
-    path      = "/nfs/general"
+    path      = "/nfs/general/media"
     read_only = false
   }
 }

@@ -34,9 +34,9 @@ service {
         image = "jellyfin/jellyfin:latest"
         ports = ["http", "https"]
         volumes = [
-          "/srv/jellyfin/config:/config",
-          "/srv/jellyfin/cache:/cache",
-          "/media:/media"
+          "/nfs/general/jellyfin/config:/config",
+          "/nfs/general/jellyfin/cache:/cache",
+          "/nfs/general/media:/media"
         ]
       }
 
