@@ -12,12 +12,12 @@ job "jellyfin" {
     }
 
     network {
-      mode = "bridge" # Use bridge mode instead of host
+      mode = "bridge"
       port "http" {
-        to = 8096 # Map container's port 8096
+        to = 8096
       }
       port "https" {
-        to = 8920 # Map container's port 8920
+        to = 8920 
       }
     }
     

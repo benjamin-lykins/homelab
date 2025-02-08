@@ -4,10 +4,8 @@ job "tfc-agent" {
 
   group "tfc-agent" {
     count = 1
-
-
     task "tfc-agent" {
-      driver = "podman"
+      driver = "docker"
 
       config {
         image = "hashicorp/tfc-agent"
