@@ -15,7 +15,7 @@ job "tfc-agent" {
         TFC_AGENT_SINGLE = "true"
         TFC_AGENT_NAME   = "${NOMAD_TASK_NAME}-${NOMAD_ALLOC_ID}"
       }
-            template {
+      template {
         data        = <<EOH
 TFC_AGENT_TOKEN="{{ with nomadVar "nomad/jobs/" }}{{ .TFC_AGENT_TOKEN }}{{ end }}"
 EOH

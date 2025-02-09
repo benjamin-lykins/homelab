@@ -2,12 +2,12 @@ job "ceph-csi-plugin-nodes" {
   datacenters = ["homelab"]
   type        = "system"
   group "nodes" {
-     service {
-        provider = "nomad"
-        name = "ceph-csi-nodes"
-        port = "metrics"
-        tags = [ "prometheus" ]
-      }
+    service {
+      provider = "nomad"
+      name     = "ceph-csi-nodes"
+      port     = "metrics"
+      tags     = ["prometheus"]
+    }
     network {
       port "metrics" {}
     }

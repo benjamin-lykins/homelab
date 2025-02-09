@@ -1,7 +1,7 @@
-proxmox_vm_name          = "client-base"
+proxmox_vm_name  = "client-base"
 proxmox_template = "client-base"
-proxmox_vm_id            = 202
-proxmox_node = "mf2"
+proxmox_vm_id    = 202
+proxmox_node     = "mf2"
 
 
 proxmox_disks = {

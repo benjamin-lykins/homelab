@@ -1,5 +1,5 @@
 job "doom" {
-  datacenters = ["dc1"]
+  datacenters = ["homelab"]
 
   group "doom" {
     count = 1
@@ -21,8 +21,8 @@ job "doom" {
       restart {
         attempts = 3
         interval = "5m"
-        delay = "25s"
-        mode = "delay"
+        delay    = "25s"
+        mode     = "delay"
       }
 
       resources {

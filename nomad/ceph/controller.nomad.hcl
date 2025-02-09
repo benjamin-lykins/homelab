@@ -1,12 +1,12 @@
 job "ceph-csi-plugin-controller" {
   datacenters = ["homelab"]
   group "controller" {
-     service {
-        provider = "nomad"
-        name = "ceph-csi-controller"
-        port = "metrics"
-        tags = [ "prometheus" ]
-      }
+    service {
+      provider = "nomad"
+      name     = "ceph-csi-controller"
+      port     = "metrics"
+      tags     = ["prometheus"]
+    }
     network {
       port "metrics" {}
     }

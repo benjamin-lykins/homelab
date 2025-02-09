@@ -1,7 +1,7 @@
-proxmox_vm_name          = "server-base"
+proxmox_vm_name  = "server-base"
 proxmox_template = "server-base"
-proxmox_vm_id            = 201
-proxmox_node = "mf3"
+proxmox_vm_id    = 201
+proxmox_node     = "mf3"
 
 proxmox_disks = {
   "0" = {

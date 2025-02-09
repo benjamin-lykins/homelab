@@ -1,4 +1,4 @@
-job "traefik" {
+job "traefik-proxy" {
   datacenters = ["homelab"]
   type        = "system"
 

@@ -1,7 +1,7 @@
-id = "ceph"
-name = "ceph"
-type = "csi"
-plugin_id = "ceph-csi"
+id           = "ceph"
+name         = "ceph"
+type         = "csi"
+plugin_id    = "ceph-csi"
 capacity_max = "200G"
 capacity_min = "100G"
 
@@ -16,8 +16,8 @@ secrets {
 }
 
 parameters {
-  clusterID = "557db982-e3ca-494b-9a2a-44ad63aa69bd"
-  pool = "pool0"
+  clusterID     = "557db982-e3ca-494b-9a2a-44ad63aa69bd"
+  pool          = "pool0"
   imageFeatures = "layering"
-  mkfsOptions = "-t ext4"
+  mkfsOptions   = "-t ext4"
 }
