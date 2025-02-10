@@ -1,5 +1,5 @@
 job "swingmusic" {
-  datacenters = ["dc1"]
+  datacenters = ["homelab"]
 
   group "swingmusic" {
 
@@ -41,10 +41,8 @@ job "swingmusic" {
       config {
         image = "ghcr.io/swingmx/swingmusic:latest"
         ports = ["http"]
-
         volumes = [
-          "local/music:/music",
-          "local/config:/config"
+        "/nfs/general/media:/copy"
         ]
       }
 
