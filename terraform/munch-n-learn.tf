@@ -1,4 +1,4 @@
-resource "proxmox_virtual_environment_vm" "haproxy" {
+resource "proxmox_virtual_environment_vm" "munch-n-learn" {
   node_name = "mf1"
   name      = "munch-n-learn"
   tags      = ["terraform"]
