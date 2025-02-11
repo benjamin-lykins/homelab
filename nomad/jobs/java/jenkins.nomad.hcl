@@ -4,6 +4,25 @@ job "jenkins" {
   group "jenkins" {
     count = 1
 
+    service {
+      port     = "http"
+      provider = "nomad"
+      name     = "jenkins"
+      check {
+        type     = "http"
+        path     = "/login"
+        interval = "10s"
+        timeout  = "2s"
+      }
+      tags = [
+        "traefik.enable=true",
+        "traefik.http.routers.jenkins.entrypoints=web",
+        "traefik.http.routers.jenkins.rule=Host(`jenkins.lykins.local`)",
+        "traefik.http.services.jenkins.loadbalancer.server.port=${NOMAD_HOST_PORT_http}"
+      ]
+
+    }
+
     ephemeral_disk {
       migrate = true
       size    = "500"
@@ -37,17 +56,7 @@ job "jenkins" {
         memory = 1024
       }
 
-      service {
-        port     = "http"
-        provider = "nomad"
-        name     = "jenkins"
-        check {
-          type     = "http"
-          path     = "/login"
-          interval = "10s"
-          timeout  = "2s"
-        }
-      }
+
     }
   }
 }

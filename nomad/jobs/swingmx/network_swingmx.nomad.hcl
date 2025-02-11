@@ -3,14 +3,6 @@ job "swingmusic" {
 
   group "swingmusic" {
 
-    volume "ceph" {
-      type            = "csi"
-      attachment_mode = "file-system"
-      access_mode     = "single-node-writer"
-      read_only       = false
-      source          = "ceph"
-    }
-
     network {
       mode = "bridge"
       port "http" {
@@ -41,26 +33,12 @@ job "swingmusic" {
       config {
         image = "ghcr.io/swingmx/swingmusic:latest"
         ports = ["http"]
-        volumes = [
-          # "/nfs/general/media:/copy" This was used to copy over data, it was a NFS mount on the client. 
-        ]
       }
 
-      volume_mount {
-        volume      = "ceph"
-        destination = "/music"
-        read_only   = false
-      }
-
-      volume_mount {
-        volume      = "ceph"
-        destination = "/config"
-        read_only   = false
-      }
 
       resources {
-        cpu    = 2000
-        memory = 2048
+        cpu    = 1000
+        memory = 1024
       }
     }
   }

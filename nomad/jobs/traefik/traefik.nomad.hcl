@@ -5,17 +5,17 @@ job "traefik-proxy" {
   group "traefik" {
 
     network {
-      port  "http"{
-         static = 80
+      port "http" {
+        static = 80
       }
-      port  "admin"{
-         static = 8080
+      port "admin" {
+        static = 8080
       }
     }
     service {
-      name = "traefik-http"
+      name     = "traefik-http"
       provider = "nomad"
-      port = "http"
+      port     = "http"
     }
 
     task "server" {
